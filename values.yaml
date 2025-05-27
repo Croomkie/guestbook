@@ -1,9 +1,9 @@
 redisMaster:
-  image: registry.k8s.io/redis:e2e
+  image: redis:7.2
   replicas: 1
 
 redisReplica:
-  image: gcr.io/google_samples/gb-redisslave:v1
+  image: redis:7.2
   replicas: 2
 
 frontend:
