@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-replica
+spec:
+  replicas: {{ .Values.redisReplica.replicas }}
+  selector:
+    matchLabels:
+      app: redis
+      role: replica
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: redis
+        role: replica
+        tier: backend
+    spec:
+      containers:
+        - name: replica
+          image: {{ .Values.redisReplica.image }}
+          ports:
+            - containerPort: 6379
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+          env:
+            - name: GET_HOSTS_FROM
+              value: dns

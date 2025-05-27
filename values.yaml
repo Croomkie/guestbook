@@ -1,0 +1,12 @@
+redisMaster:
+  image: registry.k8s.io/redis:e2e
+  replicas: 1
+
+redisReplica:
+  image: gcr.io/google_samples/gb-redisslave:v1
+  replicas: 2
+
+frontend:
+  image: gcr.io/google-samples/gb-frontend:v5
+  replicas: 3
+  serviceType: NodePort
