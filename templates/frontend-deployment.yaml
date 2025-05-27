@@ -26,3 +26,5 @@ spec:
           env:
             - name: GET_HOSTS_FROM
               value: dns
+            - name: REDIS_MASTER_SERVICE_HOST
+              value: redis-master
